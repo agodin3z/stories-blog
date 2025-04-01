@@ -4,16 +4,12 @@ import Tag from './Tag.astro';
 interface Props {
 	tags: string[];
 	withHref?: boolean;
+	isIA?: boolean;
 }
 
-const { tags, withHref } = Astro.props;
+const { tags, withHref, isIA } = Astro.props;
 ---
 
-<div class="flex flex-wrap">
-	{
-		tags.map((tag: string) => {
-			const element = <Tag tag={tag} withHref={withHref} />;
-			return withHref ? <a href={`/tags/${tag}`}>{element}</a> : element;
-		})
-	}
+<div class="flex flex-wrap gap-1">
+	{tags.map((tag: string) => <Tag tag={tag} withHref={withHref} isIA={isIA} />)}
 </div>

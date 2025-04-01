@@ -2,15 +2,29 @@
 interface Props {
 	tag: string;
 	withHref?: boolean;
+	entriesCount?: number;
+	isIA?: boolean;
 }
 
-const { tag, withHref } = Astro.props;
+const { tag, withHref, entriesCount, isIA } = Astro.props;
+
+const commonClass = `inline-flex items-center rounded border border-black/15 px-2 py-1 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white ${isIA ? 'font-mono text-xs' : ''}`;
 ---
 
-<span
-	class={`mb-2 mr-2 rounded-xl bg-stone-600 px-3 py-1 text-xs font-bold uppercase text-white group-hover:bg-stone-500 ${
-		withHref ? 'hover:bg-stone-500' : ''
-	}`}
->
-	#{tag}
-</span>
+{
+	withHref ? (
+		<a href={`/${isIA ? 'models' : 'tags'}/${encodeURIComponent(tag)}`} class={commonClass}>
+			#{tag}
+			{entriesCount !== undefined && (
+				<span class="ml-2 text-sm text-gray-500">({entriesCount})</span>
+			)}
+		</a>
+	) : (
+		<span class={commonClass}>
+			#{tag}
+			{entriesCount !== undefined && (
+				<span class="ml-2 text-sm text-gray-500">({entriesCount})</span>
+			)}
+		</span>
+	)
+}
