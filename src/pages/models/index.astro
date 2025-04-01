@@ -1,0 +1,32 @@
+---
+import Heading from '@/components/Heading.astro';
+import Section from '@/components/Section.astro';
+import Tag from '@/components/Tag.astro';
+import Base from '@/layouts/Base.astro';
+import { AppConfig } from '@/utils/AppConfig';
+import { MarkdownInstance } from 'astro';
+
+const { title } = AppConfig;
+const { description } = AppConfig;
+
+const allPosts = Object.values(
+	import.meta.glob('../posts/*.md', { eager: true })
+) as MarkdownInstance<any>[];
+const allTags = allPosts.map((post) => post.frontmatter.models).flat();
+const uniqueTags: Set<string> = new Set(allTags);
+let tagMap: Record<string, number> = {};
+
+[...uniqueTags].forEach((tag) => {
+	const count = allTags.filter((t) => t === tag).length;
+	tagMap[tag] = count;
+});
+
+tagMap = Object.fromEntries(Object.entries(tagMap).sort((a, b) => b[1] - a[1]));
+---
+
+<Base head={{ title, description }}>
+	<Section><Heading title="Posts por modelo de IA" /></Section>
+	<div class="mx-auto animate flex flex-wrap w-full max-w-screen-lg gap-2 px-4">
+		{Object.entries(tagMap).map(([tag, count]) => <Tag tag={tag} withHref isIA entriesCount={count} />)}
+	</div>
+</Base>

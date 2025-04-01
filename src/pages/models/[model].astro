@@ -1,0 +1,66 @@
+---
+import Section from '@/components/Section.astro';
+import Card from '@/components/Card.astro';
+import Base from '@/layouts/Base.astro';
+import Heading from '@/components/Heading.astro';
+import { AppConfig } from '@/utils/AppConfig';
+import { MarkdownInstance } from 'astro';
+import { sortPostsByDate } from '@/utils/data.util';
+import BackToPrevious from '@/components/BackToPrevious.astro';
+
+export async function getStaticPaths(): Promise<any> {
+	const allPosts = Object.values(
+		import.meta.glob('../posts/*.md', { eager: true })
+	) as MarkdownInstance<any>[];
+
+	const allTags: Set<string> = new Set(
+		allPosts.map((post: MarkdownInstance<Record<string, any>>) => post.frontmatter.models).flat()
+	);
+
+	return [...allTags].map((tag) => {
+		const filteredPosts = allPosts.filter((post: MarkdownInstance<Record<string, any>>) =>
+			post.frontmatter.models.includes(tag)
+		);
+
+		// Sort posts by pinned status and date
+		filteredPosts.sort(sortPostsByDate);
+
+		return {
+			params: { model: tag },
+			props: {
+				posts: filteredPosts
+			}
+		};
+	});
+}
+
+interface Props {
+	posts: MarkdownInstance<Record<string, any>>[];
+}
+
+const { model } = Astro.params;
+const title = AppConfig.title;
+const description = AppConfig.description;
+
+const { posts } = Astro.props;
+---
+
+<Base head={{ title, description }}>
+	<Section>
+		<BackToPrevious href="/models">
+			todos los modelos
+		</BackToPrevious>
+		<Heading title={`Posts with #${model}`} />
+	</Section>
+	<Section>
+		{
+			posts
+				.filter((post: any) => post.frontmatter.models?.includes(model))
+				.map((post: any) => (
+					<div class="mb-4 basis-1 last:mb-0">
+						<Card post={post} />
+					</div>
+				))
+		}
+	</Section>
+</Base>
