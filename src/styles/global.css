@@ -59,3 +59,22 @@ These styles are for code highlighting that can't be easily implemented with jus
         @apply w-12;
     }
 }
+
+
+.font-title {
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.font-hand {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+}
+
+.bg-pattern {
+    /* TODO: create pattern image */
+    background-color: #f4e4bc11;
+    @apply dark:bg-[#1a1a1a];
+}
