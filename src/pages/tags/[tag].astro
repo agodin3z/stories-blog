@@ -6,6 +6,7 @@ import Heading from '@/components/Heading.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { MarkdownInstance } from 'astro';
 import { sortPostsByDate } from '@/utils/data.util';
+import BackToPrevious from '@/components/BackToPrevious.astro';
 
 export async function getStaticPaths(): Promise<any> {
 	const allPosts = Object.values(
@@ -46,10 +47,10 @@ const { posts } = Astro.props;
 
 <Base head={{ title, description }}>
 	<Section>
+		<BackToPrevious href="/tags">
+			todas las tags
+		</BackToPrevious>
 		<Heading title={`Posts with #${tag}`} />
-		<div class="pt-2 text-center">
-			<a href="/tags" class="underline hover:text-orange-600">all tags →</a>
-		</div>
 	</Section>
 	<Section>
 		{

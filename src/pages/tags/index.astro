@@ -25,18 +25,8 @@ tagMap = Object.fromEntries(Object.entries(tagMap).sort((a, b) => b[1] - a[1]));
 ---
 
 <Base head={{ title, description }}>
-	<Section><Heading title="Posts by Tag" /></Section>
-	<div class="mx-auto grid w-full max-w-screen-md grid-cols-1 gap-x-6 px-4 md:grid-cols-2 md:px-0">
-		{
-			Object.entries(tagMap).map(([tag, count]) => (
-				<a
-					class="group row-span-1 flex justify-between py-2 hover:text-orange-600"
-					href={`/tags/${tag}`}
-				>
-					<Tag tag={tag} />
-					<p>{count}</p>
-				</a>
-			))
-		}
+	<Section><Heading title="Posts por Tag" /></Section>
+	<div class="mx-auto animate flex flex-wrap w-full max-w-screen-lg gap-2 px-4">
+		{Object.entries(tagMap).map(([tag, count]) => <Tag tag={tag} withHref entriesCount={count} />)}
 	</div>
 </Base>
