@@ -4,19 +4,21 @@ import Section from './Section.astro';
 
 <Section>
 	<div class="flex items-center justify-between">
-		<div class="text-3xl font-bold">
+		<div class="text-3xl font-bold italic">
 			<a href="/"
-				>💻 <span class="pr-2 text-2xl text-gray-500">{'<'}</span>astro<span class="text-orange-600"
-					>.</span
-				>js<span class="pl-2 text-2xl text-gray-500">{'/>'}</span></a
+				>🦄 <span class="pr-2 text-blue-600">Stories</span><span class="text-emerald-700"
+					>by</span
+				><span class="pl-2 text-gray-500"><em>Pisto</em></span></a
 			>
 		</div>
 		<div class="flex items-center">
 			<!-- Desktop Navigation -->
 			<nav>
 				<ul class="hidden flex-row sm:flex">
-					<li><a href="/tags" class="mr-3 hover:text-orange-600">TAGS</a></li>
-					<li><a href="/" class="hover:text-orange-600">BLOG</a></li>
+					<li><a href="/tags" class="mr-3 hover:text-emerald-700">TAGS</a></li>
+					<li><a href="/posts" class="mr-3 hover:text-emerald-700">POSTS</a></li>
+					<li><a href="/models" class="mr-3 hover:text-emerald-700">MODELOS</a></li>
+					<li><a href="/about" class="hover:text-emerald-700">IA</a></li>
 				</ul>
 			</nav>
 			<!-- Desktop Theme Switcher -->
@@ -67,8 +69,10 @@ import Section from './Section.astro';
 		class="mt-4 hidden rounded-lg border border-gray-200 bg-white pb-2 shadow-md transition-all duration-300 sm:hidden dark:border-gray-200 dark:bg-stone-900"
 	>
 		<nav class="flex flex-col p-3">
-			<a href="/tags" class="border-b border-gray-200 py-2 hover:text-orange-600">TAGS</a>
-			<a href="/" class="border-b border-gray-200 py-2 hover:text-orange-600">BLOG</a>
+			<a href="/tags" class="border-b border-gray-200 py-2 hover:text-emerald-700">TAGS</a>
+			<a href="/posts" class="border-b border-gray-200 py-2 hover:text-emerald-700">POSTS</a>
+			<a href="/models" class="border-b border-gray-200 py-2 hover:text-emerald-700">MODELOS</a>
+			<a href="/about" class="border-b border-gray-200 py-2 hover:text-emerald-700">IA</a>
 
 			<!-- Mobile Theme Switcher -->
 			<div class="flex items-center py-2">
