@@ -3,14 +3,25 @@ import { AppConfig } from '@/utils/AppConfig';
 import Base from '@/layouts/Base.astro';
 import PostHeader from '@/components/PostHeader.astro';
 import PostContent from '@/components/PostContent.astro';
+import { getNavigationEntries } from '@/utils/data.util';
+import { MarkdownInstance } from 'astro';
+import PostNavigation from '@/components/PostNavigation.astro';
+import BackToPrevious from '@/components/BackToPrevious.astro';
+import PostModels from '@/components/PostModels.astro';
 
 const { description } = AppConfig;
 
 const { frontmatter } = Astro.props;
+
+const allPosts = Object.values(
+	import.meta.glob('../pages/posts/*.md', { eager: true })
+) as MarkdownInstance<any>[];
+const { prevPost, nextPost } = getNavigationEntries(allPosts, frontmatter.url);
 ---
 
-<Base head={{ title: frontmatter.title, description }}>
+<Base head={{ title: frontmatter.title, description, ogImage: frontmatter?.image }}>
 	<div class="mx-auto w-full max-w-screen-md">
+		<BackToPrevious href="/posts"> todos los posts </BackToPrevious>
 		<PostHeader
 			title={frontmatter.title}
 			author={frontmatter.author}
@@ -21,5 +32,7 @@ const { frontmatter } = Astro.props;
 			img={{ src: frontmatter.image.src, alt: frontmatter.image.alt }}
 		/>
 		<PostContent><slot /></PostContent>
+		{frontmatter?.models?.length > 0 && <PostModels models={frontmatter.models} />}
+		<PostNavigation prevPost={prevPost} nextPost={nextPost} />
 	</div>
 </Base>
