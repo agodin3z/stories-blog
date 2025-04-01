@@ -26,15 +26,15 @@ const formattedDate = formatDate(pubDate);
 	<div class="flex flex-col items-center">
 		<div class="relative px-14 pt-6 pb-4 text-center">
 			{isPinned && <PinnedBadge size="md" class="absolute top-6 left-10 -translate-y-1/2" />}
-			<p class="text-4xl font-bold">{title}</p>
+			<p class="text-4xl font-title font-bold">{title}</p>
 		</div>
 		<div class="pb-4">
-			<Tags tags={tags} withHref={true} />
+			<Tags tags={tags} withHref />
 		</div>
 		<div class="text-sm">
 			<span>{formattedDate}</span> - <span>{minutesRead}</span>
 		</div>
 
-		{img.src ? <img src={img.src} alt={img.alt} /> : null}
+		{img.src ? <img class="pt-4" src={img.src} alt={img.alt} /> : null}
 	</div>
 </Section>
