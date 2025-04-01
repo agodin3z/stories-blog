@@ -1,0 +1,54 @@
+---
+import Section from '@/components/Section.astro';
+import Base from '@/layouts/Base.astro';
+import { AppConfig } from '@/utils/AppConfig';
+
+const { title } = AppConfig;
+const { description } = AppConfig;
+---
+
+<Base head={{ title, description }}>
+	<Section>
+		<div class="text-sm">
+			<p class="pt-6 text-3xl font-bold">Sobre el uso de herramientas de IA en este blog</p>
+		</div>
+		<p class="pt-10">
+			Este proyecto combina la creatividad humana con el poder de la inteligencia artificial (IA)
+			para ofrecer historias y experiencias visuales únicas. Utilizamos herramientas de IA para
+			generar texto y crear imágenes inspiradas en el contenido de la historia con el objetivo de
+			entretener.
+		</p>
+
+		<p class="pt-10 pb-4 text-lg font-bold">Herramientas utilizadas</p>
+		<p class="pb-3">
+			Algunas de las herramientas que pueden ser utilizadas para crear contenido en este sitio son:
+		</p>
+		<ul>
+			<li><strong>Microsoft Copilot</strong>: Generación de texto y creación de arte visual.</li>
+			<li><strong>ChatGPT (GPT-4o)</strong>: Generación de texto y creación de arte visual.</li>
+			<li><strong>DALL·E</strong>: Creación de gráficos y arte visual.</li>
+			<li><strong>Leonardo.Ai</strong>: Creación de gráficos y arte visual.</li>
+			<li><strong>DeepSeek v3</strong>: Generación de texto.</li>
+		</ul>
+
+		<p class="pt-10 pb-4 text-lg font-bold">Proceso creativo</p>
+		<p>
+			Las historias y las imágenes se generan a través de prompts cuidadosamente diseñados (o es lo
+			que se pretende), que garantizan que cada pieza cumpla con los objetivos de inspiración y
+			entretenimiento del blog. El proceso creativo también incluye ajustes manuales para asegurar
+			calidad, relevancia y coherencia del contenido en general.
+		</p>
+
+		<p class="pt-10 pb-4 text-lg font-bold">Licencia y ética</p>
+		<p>
+			Todo el contenido generado (a excepción donde se indique lo contrario), incluyendo texto e
+			imágenes, se publica bajo la Licencia MIT. Promovemos la transparencia y el respeto por los
+			derechos de autor y las buenas prácticas en el uso de IA.
+		</p>
+
+		<p class="pt-10 pb-4">
+			Si encuentras algún bug/problema o tienes alguna sugerencia no dudes en abrir un <a
+				href="https://github.com/agodin3z/stories-blog/issues" class="font-black text-emerald-700" target="_blank" rel="noopener noreferrer">issue en github</a>.
+		</p>
+	</Section>
+</Base>
