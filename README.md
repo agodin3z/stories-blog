@@ -1,4 +1,4 @@
-# Personal AI Generated Stories Blog
+# AI Generated Stories Personal Blog
 
 Powered by [Astro.js Personal Blog Template](https://github.com/nicdun/astro-tech-blog) – a sleek and feature-rich platform for your personal blog:
 
