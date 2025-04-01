@@ -34,3 +34,30 @@ export const sortPostsByDate = (a: MarkdownInstance<any>, b: MarkdownInstance<an
 	}
 	return 0;
 };
+
+export const getFilteredCollectionEntries = (
+	collection: MarkdownInstance<any>[]
+): {
+	entries: MarkdownInstance<any>[];
+} => {
+	const data = collection.filter((post: any) => !post.frontmatter.draft).sort(sortPostsByDate);
+
+	return { entries: data };
+};
+
+export const getNavigationEntries = (
+	collection: MarkdownInstance<any>[],
+	referenceSlug: string | undefined
+) => {
+	if (!referenceSlug) {
+		return {};
+	}
+
+	const { entries } = getFilteredCollectionEntries(collection);
+	const currentIndex = entries.findIndex((entry) => entry.url === referenceSlug);
+
+	return {
+		nextPost: entries[currentIndex + 1],
+		prevPost: entries[currentIndex - 1]
+	};
+};
