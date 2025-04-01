@@ -10,8 +10,8 @@ const { models } = Astro.props;
 ---
 
 <Section>
-	<div class="flex flex-row justify-end items-center pb-4">
-		<p class="text-xs font-mono pr-3">Contenido generado con:</p>
+	<div class="flex flex-row items-center justify-end pb-4">
+		<p class="pr-3 font-mono text-xs">Contenido generado con:</p>
 		<div>
 			<Tags tags={models} withHref isIA />
 		</div>

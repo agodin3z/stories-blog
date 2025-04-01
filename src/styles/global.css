@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "@tailwindcss/typography";
 
@@ -8,73 +8,72 @@
 so we need to keep some custom CSS but applied through Tailwind's plugin system
 These styles are for code highlighting that can't be easily implemented with just Tailwind */
 @layer utilities {
-    .content pre {
-        @apply p-0;
-    }
+	.content pre {
+		@apply p-0;
+	}
 
-    .content code {
-        @apply overflow-x-auto;
-    }
+	.content code {
+		@apply overflow-x-auto;
+	}
 
-    .content [data-rehype-pretty-code-figure] code {
-        @apply p-0;
-    }
+	.content [data-rehype-pretty-code-figure] code {
+		@apply p-0;
+	}
 
-    .content pre > code span[data-line] {
-        @apply border-l-8 border-transparent px-2;
-    }
+	.content pre > code span[data-line] {
+		@apply border-l-8 border-transparent px-2;
+	}
 
-    .content pre > code span:first-of-type {
-        @apply rounded-t-lg pt-2;
-    }
+	.content pre > code span:first-of-type {
+		@apply rounded-t-lg pt-2;
+	}
 
-    .content pre > code span:last-of-type {
-        @apply rounded-b-lg pb-2;
-    }
+	.content pre > code span:last-of-type {
+		@apply rounded-b-lg pb-2;
+	}
 
-    .content pre > code .highlighted {
-        @apply border-l-8 !border-gray-300/60 bg-gray-200/5;
-    }
+	.content pre > code .highlighted {
+		@apply border-l-8 !border-gray-300/60 bg-gray-200/5;
+	}
 
-    .content pre > code[data-line-numbers] {
-        counter-reset: line;
-    }
+	.content pre > code[data-line-numbers] {
+		counter-reset: line;
+	}
 
-    .content pre > code[data-line-numbers] > span[data-line]::before {
-        counter-increment: line;
-        content: counter(line);
-        @apply mr-8 inline-block w-4 text-left text-[#7ca2dfad];
-    }
+	.content pre > code[data-line-numbers] > span[data-line]::before {
+		counter-increment: line;
+		content: counter(line);
+		@apply mr-8 inline-block w-4 text-left text-[#7ca2dfad];
+	}
 
-    .content pre > code > span[data-line]::before {
-        content: '';
-        @apply inline-block w-4 text-right;
-    }
+	.content pre > code > span[data-line]::before {
+		content: '';
+		@apply inline-block w-4 text-right;
+	}
 
-    .content pre > code[data-line-numbers-max-digits='2'] > span[data-line]::before {
-        @apply w-8;
-    }
+	.content pre > code[data-line-numbers-max-digits='2'] > span[data-line]::before {
+		@apply w-8;
+	}
 
-    .content code[data-line-numbers-max-digits='3'] > span[data-line]::before {
-        @apply w-12;
-    }
+	.content code[data-line-numbers-max-digits='3'] > span[data-line]::before {
+		@apply w-12;
+	}
 }
 
-
 .font-title {
-    font-family: "Merriweather", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
+	font-family: 'Merriweather', serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-variation-settings: 'wdth' 100;
 }
 
 .font-hand {
-    font-family: "Lora", serif;
-    font-optical-sizing: auto;
+	font-family: 'Lora', serif;
+	font-optical-sizing: auto;
 }
 
 .bg-pattern {
-    /* TODO: create pattern image */
-    background-color: #f4e4bc11;
-    @apply dark:bg-[#1a1a1a];
+	/* TODO: create pattern image */
+	background-color: #f4e4bc11;
+	@apply dark:bg-[#1a1a1a];
 }
