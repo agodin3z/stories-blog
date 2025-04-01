@@ -1,13 +1,19 @@
 {
-	"name": "vigorous-virgo",
+	"name": "@agodin3z/stories-blog",
 	"type": "module",
 	"version": "0.0.1",
+	"private": true,
+	"description": "AI generated stories personal blog built with Astro",
+	"author": "agodin3z <pistilloagodinez@gmail.com> (https://github.com/agodin3z)",
+	"license": "MIT",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro check && astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"build:preview": "vercel build --yes && vercel deploy --prebuilt > deployment-url.txt",
+		"build:prod": "vercel build --yes --prod && vercel deploy --prod --prebuilt"
 	},
 	"dependencies": {
 		"@astrojs/check": "0.9.4",
@@ -34,5 +40,8 @@
 		"prettier": "3.5.3",
 		"prettier-plugin-astro": "0.14.1",
 		"prettier-plugin-tailwindcss": "0.6.11"
+	},
+	"volta": {
+		"node": "22.14.0"
 	}
 }
