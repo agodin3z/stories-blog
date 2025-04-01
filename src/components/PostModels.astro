@@ -1,0 +1,19 @@
+---
+import Section from './Section.astro';
+import Tags from './Tags.astro';
+
+interface Props {
+	models: string[];
+}
+
+const { models } = Astro.props;
+---
+
+<Section>
+	<div class="flex flex-row justify-end items-center pb-4">
+		<p class="text-xs font-mono pr-3">Contenido generado con:</p>
+		<div>
+			<Tags tags={models} withHref isIA />
+		</div>
+	</div>
+</Section>
