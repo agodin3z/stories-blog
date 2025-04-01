@@ -74,6 +74,6 @@ These styles are for code highlighting that can't be easily implemented with jus
 
 .bg-pattern {
 	/* TODO: create pattern image */
-	background-color: #f4e4bc11;
+	background-color: #f4e4bc44;
 	@apply dark:bg-[#1a1a1a];
 }
